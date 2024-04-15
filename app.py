@@ -30,7 +30,7 @@ def app():
         choice = st.selectbox('Login/Signup',['Login','Signup'])
 
         if choice == 'Login':
-            email = st.text_input('Email Address')
+            email = st.text_input('Username')
             password = st.text_input('Password',type='password')
 
 
@@ -55,7 +55,7 @@ def app():
             email = st.text_input('Email Address')
             password = st.text_input('Password',type = 'password')
             email = st.text_input('Enter Unique Username')
-
+            #Note rewriting email coz we storing usernames for LOGINs
             if st.button('Create my Account'):
                 client = MongoClient("mongodb+srv://samccl:yreuow1XR14ullxU@cclmpr.hmggktk.mongodb.net/?retryWrites=true&w=majority&appName=cclmpr")
                 db = client.LLM
