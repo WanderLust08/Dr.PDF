@@ -45,7 +45,7 @@ genai.configure(api_key=os.getenv(st.secrets.GOOGLE_API_KEY))
 def generate_pdf(myresp,ques):
     pdf = FPDF()
     pdf.add_page()
-    pdf.add_font('ariblk','','C:\Windows\Fonts\\ariblk.ttf', uni=True)
+    pdf.add_font('ariblk','','ariblk.ttf', uni=True)
     pdf.set_font('ariblk', size=12)
                 # mytxt = json_data['reply']
                 # pdf.multi_cell(200, 10, myresp, align="L")
@@ -116,7 +116,7 @@ def get_conversational_chain():
 def user_input(user_question):
     embeddings = GoogleGenerativeAIEmbeddings(model = "models/embedding-001")
     
-    new_db = FAISS.load_local("faiss_index", embeddings)
+    new_db = FAISS.load_local("faiss_index", embeddings,allow_dangerous_deserialization=True)
     docs = new_db.similarity_search(user_question)
 
     chain = get_conversational_chain()
